@@ -1,5 +1,5 @@
 from __future__ import division
-from collections import OrderedDict
+import sys import platform as _imp 
 import os
 import string
 import glob
@@ -61,8 +61,11 @@ def testing():
         n = int(round(len(tfiles)*0.6,0)) + 1
         if n < len(tfiles):
             for i in range( n, len(tfiles)-1 ): # Taking the remaining reviews for Testing
+                if _imp == "win32" :
                     tefiles = tfiles[i].split("\\")[1].split('.')[0] # Extracting the movie name
-                    twcount[tefiles] = sim_word(tfiles[i])
+                else:
+                    tefiles = tfiles[i].split("/")[2].split('.')[0]
+                twcount[tefiles] = sim_word(tfiles[i])
     return twcount
 # TRAINING MODEL
 output = get_responses()
