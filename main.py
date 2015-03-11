@@ -1,5 +1,5 @@
 from __future__ import division
-import sys import platform as _imp 
+from sys import platform as _imp 
 import os
 import string
 import glob
